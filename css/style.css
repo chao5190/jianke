@@ -268,21 +268,17 @@ template {
 .form-group__message {
     display: none;
     color: #c33;
-    margin-left: 10px;
+    margin-left: 10px
+}
 
-}
- .form-group-error  .form-group__message {
-    font-size: 12px;
-    color: #c33;
+.form-group-error .form-group__message {
     display: inline-block;
-    text-align: left
-}
-#register .phone-code .form-group-error  .form-group__message{
     font-size: 12px;
     color: #c33;
-    display: block;
-    text-align: left !important;
+    text-align:left;
+    
 }
+
 .form-group-error .btn:disabled,
 .form-group-error button:disabled {
     background-color: #ccc!important;
@@ -1476,7 +1472,7 @@ h3.title span {
 .footer .foot_copyright .foot_img img[data-v-834c116a] {
     margin-right: 7px;
     display: inline;
-    float: left;
+    float: left
 }
 
 .footer .foot_copyright .wljglogo[data-v-834c116a] {
@@ -1819,7 +1815,6 @@ h3.title span {
     font-size: 12px;
     margin-left: 10px
 }
-
 #register .article .register-form .form-item .content input,
 #register .article .register-form .form-item .content select {
     border: 1px solid #ddd;
@@ -1946,7 +1941,6 @@ h3.title span {
     display: block;
     text-align: left
 }
-
 #bind {
     background: url(/user/dist/register-bg.jpg?d85a352ccc86317c41eae7922cf617cd) no-repeat top;
     height: 950px
