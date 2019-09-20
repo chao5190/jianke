@@ -3,7 +3,7 @@ $(function () {
     let phoneRep = /^[1][3-9][0-9]{9}$/;
     let passwordRep = /^.{6,16}$/;
     let imageCodeVal = "";
-    let num = 1234;
+    let num = 0;
     (new Captcha({
         lineNum: 10,
         dotNum: 20,
@@ -111,9 +111,9 @@ $(function () {
                 return datetime;
             }
 
-            // num = getRandom(1000, 9999);
+            num = getRandom(1000, 9999);
             // console.log(num);
-            num = 1234;
+
 
             $.ajax({
                 type: 'post',
@@ -124,7 +124,7 @@ $(function () {
                     "showapi_appid": '105009', //这里需要改成自己的appid
                     "showapi_sign": '51084e3ee1f34d5c86af6e0e3506a8fa', //这里需要改成自己的应用的密钥secret
                     "mobile": $("#phoneID").val().trim(),
-                    "content": `{\"name\":\"牛二\",\"code\":\"${num}\",\"minute\":\"3\",\"comName\":\"亚洲最大养猪场\"}`,
+                    "content": `{\"name\":\"牛二\",\"code\":\"${num}\",\"minute\":\"3\",\"comName\":\"15K公司\"}`,
                     "tNum": "T150606060601",
                     "big_msg": ""
                 },
@@ -175,25 +175,15 @@ $(function () {
                     data: `username=${username}&phone=${phone}&password=${password}`,
                     dataType: "json",
                     success: function (data) {
-                        console.log("success");
-
-                        if (data.status == 200) {
-                            console.log(data);
-
+                        if (data.status == "success") {
                             alert(data.data.msg);
+                            window.location.href = "./login.html";
                         } else {
                             alert(data.data.msg);
                         }
                     },
                     error: function (data) {
-                        console.log("error");
-                        console.log(data);
-
-                        console.log(data.responseText);
-
                         if (data.status == "success") {
-                            console.log(response);
-
                             alert(data.data.msg);
                         } else {
                             alert(data.data.msg);

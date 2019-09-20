@@ -5984,6 +5984,13 @@ ul.shdz_ul li[data-v-c0370cae] {
     margin-top: 40px;
     text-align: right
 }
+.loginView {
+    display: none
+}
+.loginViewCurrent {
+    display: block
+}
+
 .ivu-modal-confirm-footer button+button {
     margin-left: 8px;
     margin-bottom: 0
