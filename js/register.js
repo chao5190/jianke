@@ -3,7 +3,7 @@ $(function () {
     let phoneRep = /^[1][3-9][0-9]{9}$/;
     let passwordRep = /^.{6,16}$/;
     let imageCodeVal = "";
-    let num = 0;
+    let num = 1234;
     (new Captcha({
         lineNum: 10,
         dotNum: 20,
@@ -16,7 +16,7 @@ $(function () {
     $("input").blur(function () {
         let inputid = $(this)[0].id;
         let val = $(this).val().trim();
-        console.log(inputid);
+
         switch (inputid) {
             case "usernameID":
                 Exp(inputid, val, UserNameRep, "用户名不能为空", "输入的用户名不符合规范")
@@ -38,15 +38,28 @@ $(function () {
             case "imageCode":
                 if (val.length <= 0) {
                     $("#" + inputid).parent().parent().addClass("form-group-error")
+                } else {
+                    if (val == imageCodeVal) {
+                        $("#" + inputid).parent().parent().removeClass("form-group-error")
+                    } else {
+                        $("#" + inputid).parent().parent().addClass("form-group-error")
+                        $("#" + inputid).siblings().children().eq(1).text("请输入正确的验证码")
+                    }
                 }
                 break
             case "msgCode": {
                 if (val.length <= 0) {
                     $("#" + inputid).parent().parent().addClass("form-group-error")
                     $("#" + inputid).parent().siblings().text("请输入短信验证码")
-                } else if (val == num) {
-                    $("#" + inputid).parent().parent().removeClass("form-group-error")
+                } else {
+                    if (val == num) {
+                        $("#" + inputid).parent().parent().removeClass("form-group-error")
+                    } else {
+                        $("#" + inputid).parent().parent().addClass("form-group-error")
+                        $("#" + inputid).parent().siblings().text("请输入正确的短信验证码")
+                    }
                 }
+
                 break;
             }
             default:
@@ -98,7 +111,9 @@ $(function () {
                 return datetime;
             }
 
-            num = getRandom(1000, 9999);
+            // num = getRandom(1000, 9999);
+            // console.log(num);
+            num = 1234;
 
             $.ajax({
                 type: 'post',
@@ -118,7 +133,7 @@ $(function () {
                 },
                 success: function (result) {
                     console.log(result) //console变量在ie低版本下不能用
-                    alert(result.showapi_res_code)
+
                 }
             });
         }
@@ -141,8 +156,55 @@ $(function () {
     }
     $(".register-btn").click(function () {
         $(".form-item input").trigger("blur")
+        let username = $("#usernameID").val();
+        let phone = $("#phoneID").val();
+        let password = $("#passwordA").val();
+        console.log(username, phone, password);
 
-        console.log($(".register-form").find(".form-item"));
+        let isChecked = $("#protocol").is(":checked");
+        if ($(".register-form").find(".form-item").hasClass("form-group-error")) {
+            alert("请正确填写相应信息");
+        } else {
+            if (!isChecked) {
+                alert("请同意相关协议")
+            } else {
+                console.log("ok");
+                $.ajax({
+                    type: "post",
+                    url: "../server/register.php",
+                    data: `username=${username}&phone=${phone}&password=${password}`,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("success");
+
+                        if (data.status == 200) {
+                            console.log(data);
+
+                            alert(data.data.msg);
+                        } else {
+                            alert(data.data.msg);
+                        }
+                    },
+                    error: function (data) {
+                        console.log("error");
+                        console.log(data);
+
+                        console.log(data.responseText);
+
+                        if (data.status == "success") {
+                            console.log(response);
+
+                            alert(data.data.msg);
+                        } else {
+                            alert(data.data.msg);
+                        }
+                    }
+
+
+
+                });
+            }
+        };
 
     })
 })

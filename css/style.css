@@ -272,13 +272,19 @@ template {
 }
 
 .form-group-error .form-group__message {
-    display: inline-block;
+    display: block;
     font-size: 12px;
     color: #c33;
     text-align:left;
-    
+    -moz-text-align-last: left;
+    -ms-text-align-last: left;
 }
-
+.content .form-group-error span{
+    display: block;
+    font-size: 12px;
+    color: #c33;
+    text-align:left;
+}
 .form-group-error .btn:disabled,
 .form-group-error button:disabled {
     background-color: #ccc!important;
