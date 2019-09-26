@@ -22,9 +22,6 @@ $(function () {
 
                     } else {
                         html += `<a titil${data[j].title} target="_blank" href=${data[j].href}}>${data[j].title}</a>`;
-                        console.log(html);
-                        console.log(j);
-
                         $(".jk_tcon_links").eq(i).append(html);
                         break;
                     }

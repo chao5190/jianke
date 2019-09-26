@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>列表页</title>
+    <script src="../js/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="../css/base2014.css">
+    <style>
+        .pro-listop {
+            height: 28px;
+            line-height: 28px;
+            border: 1px solid #ddd;
+            background: #f1f1f1;
+            position: relative;
+        }
+
+        li.pro-list-on {
+            background: #1369c0;
+            border: 1px solid #1369c0;
+            left: -1px;
+        }
+
+        .listop-left li {
+            float: left;
+            padding: 0 12px;
+            height: 28px;
+            line-height: 28px;
+            border: 1px solid #ddd;
+            border-left: 0;
+            position: relative;
+            top: -1px;
+            left: 0;
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .pro-list-on a,
+        .pro-list-on a:hover {
+            color: #fff;
+        }
+
+        .pro-listop a {
+            float: left;
+        }
+
+        .listop-left {
+            margin-left: 357px;
+        }
+
+        .pro-con {
+            width: 1015px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 99;
+            overflow: hidden;
+            padding-bottom: 50px;
+        }
+
+        .pro-area {
+            clear: both;
+        }
+
+        .pages {
+            text-align: center;
+            width: 1210px;
+            margin: 0 auto;
+            padding: 0 600px;
+        }
+
+        .pages a {
+            display: inline-block;
+            padding: 0 10px;
+            border: 1px solid #d7d7d7;
+            float: left;
+            margin-right: 8px;
+        }
+
+        .pro-con li {
+            width: 246px;
+            height: 380px;
+            /* *height: 399px; */
+            margin-top: 20px;
+            cursor: pointer;
+            float: left;
+            position: relative;
+            margin-right: 5px;
+        }
+
+        .lihover {
+            width: 244px;
+            border: 1px solid #fff;
+        }
+
+        .pro-botxt p {
+            line-height: 20px;
+            /* height: 40px; */
+            height: 40px;
+            padding-top: 6px;
+            overflow: hidden;
+            font-size: 12px;
+            _height: 36px;
+        }
+
+        .pro-botxt {
+            width: 206px;
+            margin: 20px auto;
+            font-family: "宋体";
+        }
+
+        .pro-botxt .pro-check {
+            display: block;
+            width: 94px;
+            height: 26px;
+            line-height: 26px;
+            color: #fff;
+            text-align: center;
+            background: #e4393c;
+            margin-top: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header" class="jkn_head_top">
+    </div>
+    <div class="jkn_head_middle clearfix"></div>
+    <div class="jkn_nav"></div>
+    <script>
+        $(".jkn_head_top").load("./header.html");
+        $(".jkn_nav").load("./nav.html")
+        $(".jkn_head_middle").load("./jkn_head_middle.html")
+    </script>
+    <script src="../js/header.js"></script>
+    <script src="../js/liebiao.js"></script>
+</body>
+
+</html>
