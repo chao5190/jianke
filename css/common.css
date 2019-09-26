@@ -171,7 +171,7 @@ em {
 .jkn_navigation,
 .top_add,
 .jkn_service {
-    width: 98%;
+    width: 90%;
     margin: 0px auto;
 }
 
@@ -788,7 +788,7 @@ li.logistics_active a.cxdd,
 }
 
 .jkn_head_m_m {
-    width: 550px;
+    width: 950px;
     overflow: hidden;
 }
 
@@ -798,6 +798,7 @@ li.logistics_active a.cxdd,
 }
 
 .jkn_sear_boxdiv {
+    margin-left: 300px;
     height: 40px;
 }
 
@@ -847,6 +848,7 @@ li.logistics_active a.cxdd,
     height: 30px;
     line-height: 30px;
     overflow: hidden;
+    margin-left:300px; 
 }
 
 .jkn_hot_labels dd {
@@ -858,7 +860,7 @@ li.logistics_active a.cxdd,
     width: 245px;
     font-size: 14px;
     margin-left: 0px;
-    float: left;
+    float: right;
 }
 
 .jkn_head_m_r li {
@@ -1047,7 +1049,7 @@ li.logistics_active .jk_log_query {
     display: none;
     width: 199px;
     /*background: rgba(0,0,0,0.9) !important;background: #000;filter: alpha(opacity=90);_*/
-    background: url("../images/nav_bg.png") repeat;
+    background: url("../img/nav_bg.png") repeat;
     height: 508px;
     z-index: 9999;
     padding: 2px 0 0 1px;
@@ -1105,7 +1107,7 @@ li.logistics_active .jk_log_query {
 
 .jnk_allsort .jk_first {
     padding-top: 1px;
-    line-height: 33px
+    line-height: 19px
 }
 
 .jnk_allsort .hover .jnk_a_dl {
