@@ -19,10 +19,11 @@ $(function () {
                 let dt = $(".item").eq(i).children().eq(0);
                 let html = "";
                 let n = 0;
+                let href = "./html/liebiao.html"
                 for (j; j < data.length; j++) {
                     if (data[j].boundary != 1) {
                         if (n == 0) {
-                            html += `<dt style=\"margin-left: 0px;\"><a title=${data[j].title} href=${data[j].href}>${data[j].title}</a></dt>`
+                            html += `<dt style=\"margin-left: 0px;\"><a title=${data[j].title} href=${href} style=\"color:red\">${data[j].title}</a></dt>`
                             n++;
                         } else {
                             html += `<dd><a title=${data[j].title} href=${data[j].href}>${data[j].title}</a></dd>`
@@ -39,6 +40,8 @@ $(function () {
             }
         }
     });
+
+
     $(".item").mouseenter(function () {
         $(this).addClass("hover").siblings().removeClass("hover");
         $(this).eq(0).children(".jk_first").children("dt").css("marginLeft", "10px");
@@ -47,7 +50,9 @@ $(function () {
     $(".item_mc").mouseleave(function () {
         $(this).parent().removeClass("hover");
         $(this).parent().children(".jk_first").children("dt").css("marginLeft", "0px");
-    })
+    });
+
+
     // 请求nav-right
     $.ajax({
         url: "./server/getdata.php",
@@ -135,4 +140,7 @@ $(function () {
     $(".banner-pic ul li img").mouseenter(function () {
         clearInterval(autobanner);
     })
+
+
+
 })

@@ -12,5 +12,4 @@ $(function () {
     $(".site_navbox").mouseleave(function () {
         $(".site_nav").removeClass("mysite_nav");
     })
-    // asdsad
 })

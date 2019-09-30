@@ -17,7 +17,6 @@ $(function () {
             url: "../server/getcountpage.php",
             dataType: "json",
             success: function (response) {
-                console.log(response);
                 let pageCount = response.data;
                 for (let i = 0; i < pageCount; i++) {
                     let oPage = $(`<a href="javascript:;">${i+1}</a>`);
@@ -30,7 +29,6 @@ $(function () {
     }).then(function () {
         getDatWithPage(currentType, 0);
     })
-    /* 002-当拿到数据后根据数据来渲染页面 */
     $(".pages").on("click", "a", function (e) {
         e.preventDefault();
         $(this).addClass("active").siblings().removeClass("active");
@@ -51,47 +49,55 @@ $(function () {
                 let html = data.map((ele) => {
                     // console.log(item);
                     return `
-                        <li>
-                        <div class="lihover">
-                            <div class="imgbig">
-                                <img src=${ele.src} height="200" width="200"  style="display: block;">
-                                    </div>
-                            <div class="pro-botxt">
-                                <span style="font-family: microsoft yahei">￥<i>${ele.span}</i></span>
-                                <s style="color: #aeacac; font-family: microsoft yahei">${ele.s}</s>
-                                <p>
-                                    <a target="_blank" "=""> ${ele.p}</a>
-                                </p>
-                                <div class="btn_Add pro_box" title="加入购物车">
-                                            <a href="javascript:void(0)" class="pro-check addCart">加入购物车</a>
+                            <li>
+                            <div class="lihover">
+                                <div class="imgbig" id=${ele.id}>
+                                    <img src=${ele.src} height="200" width="200"  style="display: block;">
                                         </div>
-                                    </div>
-                        </div>
-                    </li>
-              `
+                                <div class="pro-botxt">
+                                    <span style="font-family: microsoft yahei">￥<i>${ele.span}</i></span>
+                                    <s style="color: #aeacac; font-family: microsoft yahei">${ele.s}</s>
+                                    <p>
+                                        <a target="_blank" "=""> ${ele.p}</a>
+                                    </p>
+                                    <div class="btn_Add pro_box" title="加入购物车">
+                                                <a href="javascript:void(0)" class="pro-check addCart">加入购物车</a>
+                                            </div>
+                                        </div>
+                            </div>
+                        </li>
+                  `
                 }).join("");
                 $(".pro-con").html(html);
-            },
-            error: function () {
-                console.log("++");
+
+
+                $(".imgbig").on("click", "img", function () {
+                    let id = $(this).parent().attr("id");
+                    console.log(id);
+                    window.location.href = "./xiangqing.html?" + "id=" + id;
+                });
+                $(".btn_Add").on("click", "a", function (e) {
+                    e.preventDefault();
+                    let id = $(this).parent().parent().siblings().attr("id");
+                    $.ajax({
+                        type: "post",
+                        url: "../server/addcommdity.php",
+                        data: `id=${id}`,
+                        success: function (response) {
+                            console.log(response);
+                        }
+                    });
+                })
             }
-        });
+        })
+        /* 002-当拿到数据后根据数据来渲染页面 */
     }
 
     $(".listop-left li").click(function () {
         let index = $(this).index();
         currentType = index;
-        console.log(currentType);
-
         getDatWithPage(currentType, 0);
-        $(this).addClass(".pro-list-on").siblings().removeClass(".pro-list-on");
+        $(this).addClass("pro-list-on").siblings().removeClass("pro-list-on");
     })
+
 });
-/* var img=$(".imgbig");
-var arr=[];
-for(var i=0;i<img.length;i++){
-    var o={};
-    o.src=$(".imgbig img").eq(i).attr("src")
-    arr.push(o);
-}
-console.log(JSON.stringify(arr)) */

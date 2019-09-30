@@ -1,0 +1,86 @@
+.fr {
+    float: right;
+}
+
+div {
+    display: block;
+}
+
+.order-flow {
+    width: 960px;
+    margin-top: 8px;
+}
+
+.order-flow li.action,
+.order-flow li.action span {
+    background-color: #3797eb;
+}
+
+.order-flow li {
+    display: inline-block;
+    position: relative;
+    height: 5px;
+    background-color: #ccc;
+    width: 200px;
+}
+
+.order-flow li:first-of-type {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.clearfix:after,
+.clearfix:before {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.order-flow li span {
+    font-size: 14px;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ccc;
+    position: absolute;
+    left: 50%;
+    top: -8px;
+    margin-left: -12px;
+}
+
+.order-flow li p {
+    font-size: 12px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20px;
+    text-align: center;
+    color: #999;
+}
+
+.tabs {
+    font-size: 0;
+    margin-left: 242px;
+}
+
+.tabs .tab-item {
+    display: inline-block;
+    line-height: 40px;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    width: 120px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tabs .active {
+    position: relative;
+    border-top: #3797eb 2px solid;
+}

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车</title>
+    <script src="../js/jquery-3.4.1.js"></script>
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/carts.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/shopcar.css">
+</head>
+
+<body>
+    <div class="headers"></div>
+    <div class="header clearfix" id="header"><a class="header_l fl" href="http://127.0.0.1/jianke/" title="健客"><img
+                src="https://www.jianke.com/shoppingcart/images/logo.png" alt="健客LOGO" width="221" height="36"></a>
+        <div class="flow-wrapper fr clearfix">
+            <ul class="header_r fr order-flow fourth clearfix">
+
+                <li class="action">
+                    <span>1</span>
+                    <p>提交预定</p>
+                </li>
+
+                <li class="">
+                    <span>2</span>
+                    <p>医生回拨</p>
+                </li>
+
+                <li class="">
+                    <span>3</span>
+                    <p>完成支付</p>
+                </li>
+
+                <li class="">
+                    <span>4</span>
+                    <p>流程结束</p>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="tabs">
+
+        <div data-type="false" class="tab-item">购物车</div>
+        <div data-type="true" class="tab-item active">需求清单</div>
+    </div>
+    <section class="cartMain">
+        <div class="cartMain_hd">
+            <ul class="order_lists cartTop">
+                <li class="list_chk">
+                    <!--所有商品全选-->
+                    <div type="checkbox" id="all" class="CheckBox whole_check">
+                    </div>
+                    <span> 全选</span>
+                </li>
+                <li class="list_con">商品信息</li>
+                <li class="list_info">商品参数</li>
+                <li class="list_price">单价</li>
+                <li class="list_amount">数量</li>
+                <li class="list_sum">金额</li>
+                <li class="list_op">操作</li>
+            </ul>
+        </div>
+
+        <div class="cartBox">
+            <div class="order_content">
+
+            </div>
+        </div>
+        <!--底部-->
+        <div class="bar-wrapper">
+            <div class="bar-right">
+                <div class="piece">已选商品<strong class="piece_num">0</strong>件</div>
+                <div class="totalMoney">共计: <strong class="total_text">0.00</strong></div>
+                <div class="calBtn"><a href="javascript:;">结算</a></div>
+            </div>
+        </div>
+    </section>
+    <div class="footer"></div>
+
+    <script>
+        $(".headers").load("./header.html")
+        $(".footer").load("./footer.html")
+        $(".tabs div").click(function () {
+            $(this).addClass("active").siblings().removeClass("active");
+            $(this).attr("data-type", "true").siblings().attr("data-type", "false")
+        })
+        $.ajax({
+            type: "post",
+            url: "../server/getdata.php",
+            data: `table="commodity"`,
+            dataType: "json",
+            success: function (response) {
+                data = response.data;
+                getdata(data);
+                $(".order_content .CheckBox").click(function () {
+                    $(this).hasClass("mark") ? $(this).removeClass("mark") : $(this).addClass(
+                        "mark");
+                    let checkNum = $(".order_content .order_lists .mark").length;
+                    let BoxNum = $(".order_content .order_lists .CheckBox").length;
+                    if (checkNum == BoxNum) {
+                        $(".whole_check").addClass("mark");
+                    } else {
+                        $(".whole_check").removeClass("mark");
+                    }
+                    totalMoney()
+                })
+                $(".whole_check").click(function () {
+                    $(this).hasClass("mark") ? $(this).removeClass("mark") && $(
+                            ".order_content .CheckBox").removeClass("mark") :
+                        $(this).addClass("mark") && $(".order_content .CheckBox").addClass(
+                            "mark");
+                    totalMoney()
+                })
+                $(".plus").click(function () {
+                    let index = $(this).parents(".order_lists").index();
+                    let val = $(".sum").eq(index).val() * 1;
+                    let unit = $(".order_content .list_price").eq(index).text();
+                    let unit2 = parseFloat(unit);
+                    val++;
+                    $(".sum").eq(index).val(val);
+                    let price = val * unit2;
+                    $(".sum_price").eq(index).text(price);
+                })
+                $(".reSty").click(function () {
+                    let index = $(this).parents(".order_lists").index();
+                    let val = $(".sum").eq(index).val() * 1;
+                    let unit = $(".order_content .list_price").eq(index).text();
+                    let unit2 = parseFloat(unit);
+                    val--;
+                    console.log(val);
+                    if (val <= 1) {
+                        val = 1;
+                    }
+                    $(".sum").eq(index).val(val);
+                    let price = val * unit2;
+                    $(".sum_price").eq(index).text(price);
+                })
+                $(".delBtn").click(function () {
+                    let index = $(this).parents(".order_lists").index();
+                    commodityid = $(".order_lists").eq(1 + index).attr("commodityid") * 1;
+                    console.log(commodityid);
+
+                    $.ajax({
+                        type: "post",
+                        url: "../server/delData.php",
+                        data: `commodityid=${commodityid}`,
+                        dataType: "json",
+                        success: function (response) {
+                            console.log(response);
+                            data = response.data;
+                            getdata(data)
+                        }
+                    });
+
+                })
+            }
+
+        })
+
+        function getdata(data) {
+            $(".order_content").html(" ")
+            for (let i = 0; i < data.length; i++) {
+                let val = data[i].count;
+                let unit = data[i].price
+                let unit2 = parseFloat(unit);
+                let price = val * unit2;
+                html = ` <ul class="order_lists" commodityId=${data[i].commodityId}>
+        <li class="list_chk">
+<div class="CheckBox"></div>
+</li>
+
+<li class="list_con">
+    <div class="list_img"><a href="javascript:;"><img src=${data[i].src} alt=""></a></div>
+    <div class="list_text"><a href="javascript:;">${data[i].commodityName}</a></div>
+</li>
+<li class="list_info">
+    <p>规格：默认</p>
+    <p>尺寸：16*16*3(cm)</p>
+</li>
+<li class="list_price">
+    <p class="price">${unit}</p>
+</li>
+<li class="list_amount">
+    <div class="amount_box">
+        <a href="javascript:;" class="reduce reSty">-</a>
+        <input type="text" value=${data[i].count} class="sum">
+        <a href="javascript:;" class="plus">+</a>
+    </div>
+</li>
+<li class="list_sum">
+    <p class="sum_price">${price}</p>
+</li>
+<li class="list_op">
+    <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
+</li>
+</ul>`
+                $(".order_content").append(html);
+            }
+        }
+
+        function totalMoney() {
+            var total_money = 0;
+            var total_count = 0;
+            var mark = $(".cartBox .order_lists .list_chk .mark");
+            for (let i = 0; i < mark.length; i++) {
+                index = mark.eq(i).parents(".order_lists").children(".list_amount").children().children().eq(1).val();
+                console.log(index);
+                unit = mark.eq(i).parents(".order_lists").children(".list_sum").children().eq(0).text() * 1;
+
+                console.log(unit);
+
+                total_count += index * 1;
+                total_money += ((index * 1) * unit)
+            }
+            $(".piece_num").text(total_count);
+            $(".total_text").text(total_money);
+        }
+    </script>
+</body>
+
+</html>

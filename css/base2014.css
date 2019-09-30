@@ -247,11 +247,11 @@ html .jkn_footer .clearfix{height:auto;}/*为了比base2012的层级高*/
 .jk_tcon_links a{margin-right:25px;white-space:nowrap;_overflow:hidden;float:left;}
 .jkn_ser{width:100%; border-top:2px solid #1369c0; margin-top:10px; padding-bottom: 20px; background:#f2f2f2;}
 .jkn_service{width:990px; margin:0 auto;padding-top:28px; overflow:hidden;}
-.jkn_service dl{float:left; margin-right: 66px; width:75px; padding-left:0; overflow:hidden;}
+.jkn_service dl{float:left; margin-right: 20px; width:120px; padding-left:0; overflow:hidden;}
 .jkn_service dl.jknw105{width:108px;}
-.jkn_service dt{color:#3b3b3b; font-size: 16px; font-weight:bold; margin-bottom: 8px;height:23px; line-height:23px;}
+.jkn_service dt{color:#3b3b3b; font-size: 16px; font-weight:bold; margin-bottom: 8px;height:23px; line-height:23px;width:100px}
 .jkn_service em{position:absolute; display:block; width:20px; height:20px; top:5px; left:0; background:url(//image.jianke.com/jk2014/images/jkxz2014.png?20161101) repeat-x;}
-.jkn_service dd{line-height: 28px;   height: 28px;}
+.jkn_service dd{line-height: 28px;   height: 28px;width:115px}
 .jkn_service span{float:right; padding-right:40px;_padding-right:20px;}
 .jkn_service ul{width:580px; overflow:hidden; float:right; color:#3c3c3c;}
 .jkn_service li{float:right; text-align:left; padding-left:65px;}

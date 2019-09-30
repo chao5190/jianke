@@ -1,0 +1,73 @@
+<div class="jiankecode">
+    <div class="wx" style="top: 0px;">
+        <img src="https://image.jianke.com/jk2014/images/ewm.gif" width="60" height="60">
+        <p class="wxtxt">扫码福利</p>
+    </div>
+</div>
+<div class="codeshow" style="display: none; left: -200px;">
+    <img src="https://image.jianke.com/jk2014/images/gzewm.jpg" width="135" height="156">
+    <span></span>
+</div>
+<!--QQ咨询-->
+<!--<div th:if="${NOT isThirdPlatform}" class="qqserver">-->
+<!--<a href="javascript:void(0)"-->
+<!--onclick="javascript:window.open('https://wpd.b.qq.com/page/webchat.html?nameAccount=4006666800');">-->
+<!--<img src="https://image.jianke.com/jk2014/images/leftfloat_03.jpg" width="60" height="74" />-->
+<!--</a>-->
+<!--</div>-->
+<div class="abox-cart aside-abox">
+    <a href="javascript: window.location.href= Cart.viewUrl + '?isRx=false%26backurl=' + escape(document.URL)"
+        onclick="_hmt.push(['_trackEvent', '商品详情页_购物车', 'click', '_']);">
+        <i></i>
+        <span>购物车</span>
+        <em id="abox-carttotal" class="">0</em>
+    </a>
+</div>
+<div class="abox-detail aside-abox">
+    <a href="javascript: window.location.href = Cart.viewUrl + '?isRx=true%26backurl=' + escape(document.URL);"
+        onclick="_hmt.push(['_trackEvent', '商品详情页_需求清单', 'click', '_']);">
+        <i></i>
+        <span>需求清单</span>
+        <em id="abox-detailtotal" class="">0</em>
+    </a>
+</div>
+<div class="re-top" style="display: block;">
+    <a href="javascript:void(0)" onclick="$('body,html').animate({scrollTop:0});"></a>
+</div>
+
+<!-- norxcart start -->
+<div class="cart-box detail-cart" style="display: none;">
+    <span class="cart-icon"></span>
+    <div class="cart-abox" tabindex="5000" style="overflow-y: hidden; outline: none;">
+        <ul class="cartli" id="cartli">
+
+        </ul>
+    </div>
+    <div class="cart-detail">
+        <div class="pay-cartbox">
+            <p>共<span id="cart-num">0</span>件商品</p>
+            <p>合计：<span id="cart-total">￥0.0</span></p>
+        </div>
+        <a href="javascript: window.location.href = Cart.viewUrl + '?isRx=false%26backurl=' + escape(document.URL);"
+            onclick="_hmt.push(['_trackEvent', '商品详情页_去结算', 'click', '_']);" class="cartbtn">去结算</a>
+    </div>
+</div>
+<!-- norxcart End-->
+
+<!-- rxcart start -->
+<div class="detail-box detail-cart" style="display: none;">
+    <span class="cart-icon"></span>
+    <div class="cart-abox" tabindex="5001" style="overflow-y: hidden; outline: none;">
+        <ul class="cartli" id="detailli">
+
+        </ul>
+    </div>
+    <div class="cart-detail">
+        <div class="pay-cartbox">
+            <p>共<span id="detail-num">0</span>件商品</p>
+            <p>合计：<span id="detail-total">￥0.0</span></p>
+        </div>
+        <a href="javascript: window.location.href= Cart.viewUrl + '?isRx=true%26backurl=' + escape(document.URL);"
+            onclick="_hmt.push(['_trackEvent', '商品详情页_提交需求', 'click', '_']);" class="cartbtn">提交需求</a>
+    </div>
+</div>

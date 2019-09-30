@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>详情页</title>
+    <script src="../js/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="../css/base2014.css">
+    <link rel="stylesheet" href="../css/detail1310.css">
+    <style>
+        ul li {
+            list-style: none;
+        }
+
+
+
+        .magnify-box {
+            width: 450px;
+            height: 450px;
+            position: relative;
+        }
+
+        .min-img {
+            border: solid 1px #000;
+            width: 450px;
+            height: 450px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .min-img img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            margin-left: 340px;
+        }
+
+        .max-img {
+            width: 355.50px;
+            height: 355.50px;
+            overflow: hidden;
+            position: absolute;
+            left: 452px;
+            top: 20px;
+            display: none;
+        }
+
+        .max-img img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 9999;
+        }
+
+        .mask {
+            width: 200px;
+            position: absolute;
+            height: 200px;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, .3);
+            display: none;
+        }
+
+        .img-list {
+            width: 450px;
+            height: 100px;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            overflow: hidden;
+        }
+
+        .img-list ul {
+            overflow: hidden;
+
+        }
+
+        .img-list ul li {
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            border-right: 1px solid #000;
+            border-left: solid 1px #000;
+            box-sizing: border-box;
+
+        }
+
+        .img-list ul li img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .box {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 178px;
+            left: 790px;
+            margin: 20px;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <div id="header" class="jkn_head_top">
+    </div>
+    <div class="jkn_head_middle clearfix"></div>
+    <div class="jkn_nav"></div>
+    <div class="main">
+        <div class="container">
+            <div class="magnify-box">
+                <div class="min-img">
+                    <img src="">
+                    <div class="mask"></div>
+                </div>
+                <div class="max-img">
+                    <img src="">
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="det_title">
+                    <div class="widet">
+                        <h1>静灵口服液(安生)</h1>
+                        <!--<span id="Slogan" th:if="${not product.isRX}"  th:text="''"> 肝癌经典中成药，有效阻断肝癌术后复发 </span>-->
+                        <span id="Slogan"></span>
+                    </div>
+                </div>
+                <div class="effect_p"
+                    style="position: relative; padding-bottom: 5px; margin-bottom: 10px; border-bottom: 1px dashed rgb(221, 221, 221);">
+                    <span class="text">滋阴潜阳，宁神益智。用于儿童多动症，见有注意力涣散，多动多语，冲动任性，学习困难，舌质红，脉细数等肾阴不足，肝阳偏旺者。</span>
+                    <a class="more_btn" href="https://www.jianke.com/product/7047.html#" shape="rect">更多作用</a>
+                </div>
+                <dl class="assort tongyong" data-p="">
+                    <dt>通用名称：</dt>
+                    <dd>
+                        <a target="_blank" href="https://www.jianke.com/tongyongming/jinglingkoufuye"
+                            shape="rect">静灵口服液(安生)</a>
+                        <img title="处方药" src="https://image.jianke.com/jk2/images/Rx.png">
+                    </dd>
+                </dl>
+                <div class="Price_info">
+                    <dl id="price_big" class="assort bigPrice">
+                        <dt>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</dt>
+                        <dd><em>￥269.00</em></dd>
+                    </dl>
+                </div>
+                <dl class="assort spe_info guige tzxzz">
+                    <dt>建议搭配：</dt>
+                    <dd class="specif jk_xztz"><a class="active_a" title="一件体验装" href="javascript:void(0)"
+                            shape="rect">一件体验装</a><a href="javascript:void(0)" title="多动症常规治疗(多动宁胶囊)" data-id="12075"
+                            data-pid="804299" shape="rect">多动症常规治疗(多动宁胶囊)</a><a href="javascript:void(0)"
+                            title="多动抽搐治疗方案(可乐定透皮贴片(瑞福莱))" data-id="12076" data-pid="804299"
+                            shape="rect">多动抽搐治疗方案(可乐定透皮贴片(瑞福莱))</a><a href="javascript:void(0)"
+                            title="青年多动症治疗(盐酸托莫西汀胶囊(择思达))" data-id="12077" data-pid="804299"
+                            shape="rect">青年多动症治疗(盐酸托莫西汀胶囊(择思达))</a></dd>
+                </dl>
+                <dl id="trPacking" class="assort spe_info guige">
+                    <dt>产品规格：</dt>
+                    <dd class="specif">
+                        <a title="10ml*10支" shape="rect" href="https://www.jianke.com/product/11913.html">10ml*10支</a>
+                        <a title="6支" shape="rect" href="https://www.jianke.com/product/197016.html">6支</a>
+                        <a class="active_a" title="10ml*24支" shape="rect" href="#">10ml*24支</a>
+
+
+                    </dd>
+                </dl>
+                <div class="btn_pay_box">
+                    <div class="btn_box">
+                        <dl class="assort pro_num">
+                            <dt>数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量：</dt>
+                            <dd>
+                                <input type="text" id="QuantityText" value="1" maxlength="4" class="inp_box">
+                                <a href="javascript:void(0)" class="btntop imgbg_i" shape="rect"></a>
+                                <a href="javascript:void(0)" class="btnbottom imgbg_i" shape="rect"></a>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <a title="加入清单" class="booking pro_box require" shape="rect" rxbtn="single"
+                    style="font-size: 16px;">加入清单</a>
+            </div>
+        </div>
+        <div class="footer"></div>
+        <div class="aside-box"></div>
+        <script>
+            $(".jkn_head_top").load("./header.html");
+            $(".jkn_nav").load("./nav.html");
+            $(".jkn_head_middle").load("./jkn_head_middle.html")
+            $(".footer").load("./footer.html")
+            $(".aside-box").load("./aside.box")
+        </script>
+        <script src="../js/xiangqing.js"></script>
+</body>
+
+</html>
