@@ -109,6 +109,22 @@ $(function () {
     // 轮播图
     let index = 0;
 
+
+    $(".banner-next").click(function () {
+        console.log("----");
+
+        next();
+    })
+    $(".banner-prev").click(function () {
+        prev();
+    })
+    let autobanner = setInterval(function () {
+        next();
+    }, 2000);
+    $(".banner-pic ul li img").mouseenter(function () {
+        clearInterval(autobanner);
+    })
+
     function btnclick(index) {
         $(".banner-pic ul li").eq(index).css("display", "list-item");
         $(".banner-pic ul").eq(index).siblings().children().css("display", "none");
@@ -128,19 +144,5 @@ $(function () {
         if (index <= -1) index = 4;
         btnclick(index);
     }
-    $(".banner-next").click(function () {
-        next();
-    })
-    $(".banner-prev").click(function () {
-        prev();
-    })
-    let autobanner = setInterval(function () {
-        next();
-    }, 2000);
-    $(".banner-pic ul li img").mouseenter(function () {
-        clearInterval(autobanner);
-    })
-
-
 
 })

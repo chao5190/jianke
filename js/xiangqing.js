@@ -1,12 +1,12 @@
 $(function () {
     new Promise(
         function (resolve) {
-            let queryString = decodeURI(window.location.search.slice(4));
-            console.log(queryString);
+            let id = decodeURI(window.location.search.slice(4));
+
             $.ajax({
                 type: "post",
                 url: "../server/getcart.php",
-                data: `id=${queryString}`,
+                data: `id=${id}`,
                 dataType: "json",
                 success: function (response) {
                     let data = response.data[0];
@@ -106,6 +106,23 @@ $(function () {
             }
             $("#QuantityText").val(index);
         })
+        $(".require").click(function () {
+            let count = $("#QuantityText").val();
+            let id = decodeURI(window.location.search.slice(4));
+            $.ajax({
+                type: "post",
+                url: "../server/updateData.php",
+                data: `count=${count}&id=${id}`,
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+
+                }
+            });
+
+        })
+
+
     })
 
 })

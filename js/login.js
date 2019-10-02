@@ -45,7 +45,7 @@ $(function () {
             let timeCount = 60;
             let timer = setInterval(function () {
                 timeCount--;
-                $("#msgCodeBtn").text(`${timeCount} 秒`);
+                $(".code-sms").text(`${timeCount} 秒`);
                 if (timeCount == 0) {
                     clearInterval(timer);
                     $("#msgCodeBtn").text(`发送短信验证码`);
@@ -151,7 +151,8 @@ $(function () {
             alert("请正确填写相应信息");
         } else {
             if (phone.length > 0) {
-                alert("登录成功")
+                alert("登录成功");
+                window.location.href = "http://127.0.0.1/jianke/";
             } else {
                 $.ajax({
                     type: "post",
@@ -161,7 +162,7 @@ $(function () {
                     success: function (data) {
                         if (data.status == "success") {
                             alert(data.data.msg);
-                            window.location.href = "../index.html";
+                            window.location.href = "http://127.0.0.1/jianke/";
                         } else {
                             alert(data.data.msg);
                         }
